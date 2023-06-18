@@ -8,36 +8,37 @@ jobs:
   build-latest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: Login to DockerHub
-        uses: docker/login-action@v1
+      - name: Login to GHCR
+        uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push Regular Docker Image
-        uses: docker/build-push-action@v2.6.1
+        uses: docker/build-push-action@v4
         with:
           context: "${{ github.workspace }}"
           push: true
-          tags: technoguyfication/caddy-cloudflare:latest
+          tags: dsluo/caddy-cloudflare:latest
 
   build-alpine:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: Login to DockerHub
-        uses: docker/login-action@v1
+      - name: Login to GHCR
+        uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push Alpine Docker Image
-        uses: docker/build-push-action@v2.6.1
+      - name: Build and push Regular Docker Image
+        uses: docker/build-push-action@v4
         with:
           context: "${{ github.workspace }}"
           push: true
-          tags: technoguyfication/caddy-cloudflare:alpine
-          file: "Dockerfile.alpine"
+          tags: dsluo/caddy-cloudflare:latest
