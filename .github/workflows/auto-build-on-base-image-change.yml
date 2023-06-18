@@ -41,4 +41,5 @@ jobs:
         with:
           context: "${{ github.workspace }}"
           push: true
-          tags: dsluo/caddy-cloudflare:latest
+          tags: dsluo/caddy-cloudflare:alpine
+          file: "Dockerfile.alpine"
