@@ -6,6 +6,8 @@ on:
 
 jobs:
   build-latest:
+    permissions:
+      packages: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -26,6 +28,8 @@ jobs:
 
   build-alpine:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     steps:
       - uses: actions/checkout@v3
 
