@@ -24,7 +24,7 @@ jobs:
         with:
           context: "${{ github.workspace }}"
           push: true
-          tags: ${{ github.repository }}:latest
+          tags: ghcr.io/${{ github.repository }}:latest
 
   build-alpine:
     runs-on: ubuntu-latest
@@ -45,5 +45,5 @@ jobs:
         with:
           context: "${{ github.workspace }}"
           push: true
-          tags: ${{ github.repository }}:alpine
+          tags: ghcr.io/${{ github.repository }}:alpine
           file: "Dockerfile.alpine"
